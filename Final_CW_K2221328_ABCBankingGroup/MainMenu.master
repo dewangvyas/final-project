@@ -1,0 +1,188 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/TopHeader.Master" AutoEventWireup="true" CodeBehind="MainMenu.master.cs" Inherits="Final_CW_K2221328_ABCBankingGroup.MainMenu" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        
+        .nav-item
+        {
+            text-decoration:none;
+            color:#ffffff;
+            padding: 15px 0;
+            width:100%;
+        }
+        /*.active{
+            background-color:aqua;
+        }*/
+        
+        .nav-item:active{
+            background-color: darkblue;
+        }
+        .nav-item-balance{
+            padding-right: 10px;
+            width:100%;
+            text-align:right;
+        }
+        .nav-item-balance-val{
+            color: #ffffff;
+            padding: 15px 0;
+            width:100%;
+        }
+        .nav-item-logout{
+            margin:10px;
+            padding: 5px 10px;
+            background-color:#9a1414;
+            color:white;
+            border:1px #000 solid;
+            font-weight:600;
+        }
+        .nav-item-logout:active{
+            background-color:darkred;
+        }
+        .txtBox{
+            color:#999;
+        }
+        .txtBox:focus{
+            color:#000;
+        }
+        /*.admin-label{
+            float:right;
+        }*/
+
+        .user-details{
+            width: 60%;
+            margin:auto;
+
+        }
+        .gvCredit, .gvDebit{
+            text-align:center;
+            width: 90%;
+            margin:30px;
+        }
+        .edit-delete{
+            text-decoration:none;
+            margin:5px;
+            color:white;
+            background-color:darkblue;
+            padding:5px 10px;
+            border-radius:8px 3px;
+            cursor:pointer;
+            box-shadow: 2px 5px 5px rgba(0,0,0,0.3);
+        }
+
+        .all-users td{
+            white-space: nowrap;
+        }
+
+        .edit-user{
+            width:40%;
+            padding:30px;
+        }
+
+        .pagination-all-users{
+            text-decoration:none;
+            padding:100px;
+        }
+        .container-div{
+            background-color:#d8daeb;
+            min-height:100vh;
+        }
+        .dashboard-header{
+            font-size:30px !important;
+            padding:30px;
+        }
+        .dashboard-content{
+            width:25%;
+            padding:40px 60px;
+            border:3px solid darkblue;
+            border-radius:15px 8px;
+            margin:20px;
+            transition:0.3s ease-in-out;
+            cursor:pointer;
+            box-shadow:none;
+            transform: scale(1);
+        }
+        .dashboard-content:hover{
+            background-color:darkblue;
+            color:#fff;
+            transform: scale(1.05);
+            box-shadow:2px 8px 5px rgba(0,0,0,0.5);
+        }
+        .dashboard-h6-div{
+            font-size: 20px;
+        }
+        .dashboard-content:hover .dashboard-h6-div{
+            display:none;
+            transition:0.3s ease-in-out;
+        }
+        .dashboard-label-class{
+            display:none;
+        }
+        .dashboard-content:hover .dashboard-label-class{
+            display:block;
+            font-size:25px;
+            font-weight:600;
+            color:#ffffff;
+            transition:0.3s ease-in-out;
+        }
+        .status-light-green{
+            float:right;
+            width:10px;
+            padding:10px;
+            border:1px solid #000;
+            border-radius:50%;
+            transform: translate(-14px,-47px);
+            background-color: #72ca1d;
+            box-shadow: 1px 3px 3px rgb(0 0 0 / 50%) inset;
+        }
+        .status-light-red{
+            float:right;
+            width:10px;
+            padding:10px;
+            border:1px solid #000;
+            border-radius:50%;
+            transform: translate(-14px,-47px);
+            background-color: #ba1726;
+            box-shadow: 1px 3px 3px rgb(0 0 0 / 50%) inset;
+        }
+    </style>
+
+ 
+
+    <%--<script>
+        $(document).ready(function () {
+ 
+            $('nav-item').click(function (e)
+            {
+                $('nav-item').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>--%>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div align="center" style="background-color: #2121b5;font-size:16px;font-weight:600;width: auto; display:flex;">
+        
+        <asp:HyperLink ID="adminDashboard" runat="server" CssClass="nav-item" NavigateUrl="Dashboard.aspx">DASHBOARD</asp:HyperLink>
+        <asp:HyperLink ID="hlAdminData" runat="server" CssClass="nav-item" NavigateUrl="AllUsers.aspx">ALL DATA</asp:HyperLink>
+        <asp:HyperLink ID="hlTransaction" runat="server" CssClass="nav-item active" NavigateUrl="Transaction.aspx">TRANSACTION</asp:HyperLink>
+        <asp:HyperLink ID="hlCredits" runat="server" CssClass="nav-item" NavigateUrl="CreditTransaction.aspx">MY CREDITS</asp:HyperLink>
+        <asp:HyperLink ID="hlDebits" runat="server" CssClass="nav-item" NavigateUrl="DebitTransaction.aspx">MY DEBITS</asp:HyperLink>
+
+        <asp:HyperLink ID="hlDeposit" runat="server" CssClass="nav-item" NavigateUrl="Deposit.aspx">DEPOSIT</asp:HyperLink>
+        <asp:HyperLink ID="hlWithdrawl" runat="server" CssClass="nav-item" NavigateUrl="Withdrawl.aspx">WITHDRAWL</asp:HyperLink>
+        <asp:HyperLink ID="hlStatement" runat="server" CssClass="nav-item" NavigateUrl="Statement.aspx">STATEMENT</asp:HyperLink>
+        
+        <%--<asp:Label ID="Label1" runat="server" Text="BALANCE" CssClass="nav-item nav-item-balance" Font-Bold="true"></asp:Label>--%>
+        <asp:Label ID="lblBalance" runat="server" CssClass="nav-item-balance-val" Font-Bold="true"></asp:Label>
+        <asp:HyperLink ID="hlUser" runat="server" CssClass="nav-item active" NavigateUrl="UserDetails.aspx">YOUR DETAILS</asp:HyperLink>
+        <asp:HyperLink ID="hlAdmin" runat="server" CssClass="nav-item active" NavigateUrl="UserDetails.aspx">ADMIN</asp:HyperLink>
+        <asp:HyperLink ID="hlEmployee" runat="server" CssClass="nav-item active" NavigateUrl="UserDetails.aspx">EMPLOYEE</asp:HyperLink>
+        <asp:Button ID="btnLogout" runat="server" Text="LOGOUT" CssClass="nav-item nav-item-logout lnr-button" CausesValidation="false" OnClick="btnLogout_Click"/>
+        
+    </div>
+
+    <asp:ContentPlaceHolder ID="ContentPH" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+</asp:Content>
