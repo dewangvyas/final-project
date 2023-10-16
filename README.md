@@ -5,17 +5,6 @@ Course
 Software Architecture and Programming Models (CI7250_A_TB1_22)
 Course Work 2: Practical Report with the code base.
 
-Professor
----------
-Prof. Soheil Khaddaj
-Prof. Jamshid Dehmeshki
-Prof. Jarek Francik
-
-STUDENT DETAILS
----------------
-Name: Dewang Rohit Vyas
-ID: K2221328
-Email: k2221328@kingston.ac.uk
 
 Software and Framework
 ----------------------
